@@ -1,4 +1,4 @@
-//Schéma de donné pour User
+//Schéma de donné pour user
 
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
@@ -17,4 +17,4 @@ userSchema.plugin(uniqueValidator);
 
 
 //Exportation du schéma User
-module.exports = mongoose.model('User', userSchema); 
+module.exports = mongoose.model('user', userSchema); 

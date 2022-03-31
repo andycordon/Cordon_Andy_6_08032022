@@ -1,7 +1,6 @@
 //Express
 const express = require('express');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const path = require('path');
 const userRoutes = require('./routes/user');
 const sauceRoutes = require('./routes/sauce');
@@ -30,8 +29,7 @@ app.use((req, res, next) => {
 //Gestion des images en static
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-app.use(express.json())
-app.use(bodyParser.json()); 
+app.use(express.json()) 
 
 
 //Gestion des routes User et Sauce

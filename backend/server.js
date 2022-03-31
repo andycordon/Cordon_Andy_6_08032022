@@ -31,7 +31,7 @@ const errorHandler = error => {
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
   switch (error.code) {
     case 'EACCES':
-      console.error(bind + 'demande des privilèges élevés.');
+      console.error(bind + 'demande un niveau plus élevés.');
       process.exit(1);
       break;
     case 'EADDRINUSE':

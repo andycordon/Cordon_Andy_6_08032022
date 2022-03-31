@@ -11,11 +11,11 @@ module.exports = (req, res, next) => {
     req.token = jwt.verify(token, process.env.TOKEN_KEY);
     
     if (req.body.userId && req.body.userId !== req.token.userId) {
-      throw "L'ID de l'utilisateur est invalide...";
+      throw 'Utilisateur invalide...';
     } else {
       next();
     }
   } catch {
-    res.status(403).json({ error:"La requête n'est pas authentifié..."});
+    res.status(403).json({ error:'Mauvaise authentification...'});
   }
 };

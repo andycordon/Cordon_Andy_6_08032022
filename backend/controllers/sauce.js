@@ -18,14 +18,14 @@ exports.getAllSauces = (req, res, next) => {
 //Récupération d'une sauce
 exports.getOneSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
-        .then(thing => res.status(200).json(thing))
+        .then(sauces => res.status(200).json(sauces))
         .catch(error => res.status(404).json({ error }));
 };
 
 
 //Création de la sauce
 exports.createSauce = (req, res, next) => {
-    const sauceObject = JSON.parse(req.body.sauce);
+    const sauceObject = JSON.parse(req.body.sauces);
     delete sauceObject._id;
     let sauce = new Sauce({
         userId: req.token.userId,
@@ -36,7 +36,7 @@ exports.createSauce = (req, res, next) => {
 
 //Sauvegarde de la sauce dans la base de données
     sauce.save()
-        .then(() => res.status(201).json({ message: 'La sauce a été sauvegardé' }))
+        .then(() => res.status(201).json({ message: 'La sauce a été ajouté' }))
         .catch(error => res.status(400).json({ error }));
 };
 
@@ -103,7 +103,7 @@ exports.deleteSauce = (req, res, next) => {
                         .catch(error => res.status(400).json({ error }));
                 });
             } else {
-                return res.status(403).json({ message: "Vous n'êtes pas autorisé à faire ceci..." })
+                return res.status(400).json({ message: "Vous n'êtes pas autorisé à faire ceci..." })
             }
         })
         .catch(error => res.status(500).json({ error }));
