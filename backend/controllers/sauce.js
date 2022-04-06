@@ -63,7 +63,7 @@ exports.deleteSauce = (req, res, next) => {
 
 //Likes Dislikes et retour neutre
 exports.likeSauce = (req, res, next) => {
-    if (req.body.like === 1) {  // J'aime
+    if (req.body.like === 1) {
         Sauce.updateOne( {_id:req.params.id}, { $push: { usersLiked: req.body.userId }, $inc: { likes: +1 } })
             .then(() => res.status(200).json({ message: "J'aime cette sauce !"}))
             .catch(error => res.status(400).json({ error }));
