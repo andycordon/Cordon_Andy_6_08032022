@@ -1,4 +1,5 @@
 //Importation de package
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -9,7 +10,7 @@ const app = express();
 
 
 //Connexion à la base de donnée MongoDB
-mongoose.connect('mongodb+srv://CordonAndy:MongoDB@cluster0.ybf3p.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_LINK}?retryWrites=true&w=majority`,
     { useNewUrlParser: true,
      useUnifiedTopology: true
     })
